@@ -21,7 +21,7 @@ const Card = ({ data, func }) => {
     <div className='w-full h-[40vh] p-2 px-4 overflow-auto relative'>
       <div className='w-full flex justify-between items-center mt-2'>
         <h1 className='text-2xl mb-3 font-semibold text-zinc-300'>Trending</h1>
-        <Dropdown title='Filter' options={['MOVIE', 'TV', 'ALL']} func={func} />
+        <Dropdown title='Filter' options={['all', 'tv', 'movie']} func={func} />
       </div>
       <button onClick={scrollLeftHandler} className="absolute hover:bg-zinc-600 hover:text-white top-[65%] left-1 text-zinc-400 cursor-pointer px-2 py-1 bg-gray-700 rounded-full z-50">
         <i className="ri-arrow-left-circle-fill"></i>

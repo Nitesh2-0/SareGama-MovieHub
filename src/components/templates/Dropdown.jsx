@@ -1,44 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Dropdown = ({ options, func , title}) => {
-  const [category, setCategory] = useState(title);
-  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(title);
 
   useEffect(() => {
-    func(category.toLowerCase());
-  }, [category, func]);
-
-  const handleCategoryChange = (item) => {
-    setCategory(item);
-    setIsOpen(false);
-  };
+    func(selectedOption.toLocaleLowerCase())
+    console.log(selectedOption);
+  }, [selectedOption])
 
   return (
-    <div className="dropdown relative inline-block">
-      <input
-        type="checkbox"
-        id="my-dropdown"
-        checked={isOpen}
-        onChange={() => setIsOpen(!isOpen)}
-        className="hidden"
-      />
-      <label className="w-52 relative bg-[#1F1E24] text-white p-2 cursor-pointer" htmlFor="my-dropdown">
-        {category}
-        <i className="ri-arrow-drop-down-fill px-2 absolute right-2 top-1/2 transform -translate-y-1/2"></i>
-      </label>
-      {isOpen && (
-        <ul className="dropdown-menu absolute left-0 mt-1 w-full bg-gray-700 text-white">
-          {options.map((item, i) => (
-            <li
-              key={i}
-              onClick={() => handleCategoryChange(item)}
-              className="p-2 cursor-pointer hover:bg-gray-600"
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="px-4 py-1 w-52 text-zinc-300">
+      <select
+        id="dropdown"
+        value={selectedOption}
+        onChange={(e) => setSelectedOption(e.target.value)}
+        className=" mt-1 block w-full px-3 py-2 bg-[#1F1E24] border border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+      >
+        <option value="" disabled>
+          {title.toUpperCase()}
+        </option>
+        {options.map((option, index) => (
+          <option key={index} value={option}>
+            {option.toUpperCase()}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

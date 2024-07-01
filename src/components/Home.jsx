@@ -4,13 +4,14 @@ import TopNav from './templates/TopNav';
 import axios from "../utils/axios";
 import Header from './templates/Header';
 import Card from './templates/Card';
-import website_loader from '/website_loader.gif'
+import Loader from './Loader';
 
 const Home = () => {
-  document.title = "SareGama | Movie HUB"
+  document.title = "MovieHUB | All"
   const [wallpaper, setWallpaper] = useState(null)
   const [trending, setTrending] = useState(null)
   const [category, setCategory] = useState("all")
+  const [loading, setLoading] = useState(true)
   const getBackgroundWallpaper = async () => {
     try {
       const { data } = await axios.get(`/trending/all/day`)
@@ -31,6 +32,9 @@ const Home = () => {
   useEffect(() => {
     GetTrending();
     !wallpaper && getBackgroundWallpaper();
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000);
   }, [category])
 
   return wallpaper && trending ? <>
@@ -40,7 +44,7 @@ const Home = () => {
       <Header data={wallpaper} />
       <Card data={trending} func={setCategory} />
     </div>
-  </> : <website_loader />
+  </> : <div className=' w-screen h-screen flex text-center items-center justify-center text-white'><Loader /></div>
 }
 
 export default Home
