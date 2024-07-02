@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
 const Dropdown = ({ options, func , title}) => {
+  if(title.toLowerCase()=='duration'){
+    title='day'
+  }
+  if(title.toLowerCase()=='filter'){
+    title='all'
+  }
+  if(title.toLowerCase()=='category'){
+    title='all'
+  }
   const [selectedOption, setSelectedOption] = useState(title);
 
   useEffect(() => {
     func(selectedOption.toLocaleLowerCase())
-    console.log(selectedOption);
   }, [selectedOption])
 
   return (

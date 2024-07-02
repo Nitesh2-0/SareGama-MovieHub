@@ -5,7 +5,6 @@ const Header = ({ data }) => {
   const backgroundUrl = data
     ? `url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`
     : "none";
-  console.log(data);
   return (
     <div
       style={{

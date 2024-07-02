@@ -23,7 +23,7 @@ const Home = () => {
   }
   const GetTrending = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/day`)
+      const { data } = await axios.get(`/trending/${category.toLocaleLowerCase()}/day`)
       setTrending(data.results);
     } catch (error) {
       console.log(error);

@@ -38,7 +38,7 @@ const TopNav = () => {
           )}
         </div>
         {query.length > 0 && (
-          <div className="w-full md:w-3/4 lg:w-2/3 max-h-[50vh] bg-zinc-800 absolute top-full overflow-y-auto overflow-x-hidden shadow-lg">
+          <div className="z-50 w-full md:w-3/4 lg:w-2/3 max-h-[50vh] bg-zinc-800 absolute top-full overflow-y-auto overflow-x-hidden shadow-lg">
             {search.map((s, idx) => (
               <Link key={idx} className='flex items-center p-4 border-b border-zinc-100 font-semibold text-zinc-300 hover:bg-[#1F1E24] duration-100 hover:text-white'>
                 <img className='w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24 rounded mr-4 shadow-lg' src={(s.backdrop_path || s.profile_path) ? `https://image.tmdb.org/t/p/original/${s.backdrop_path || s.profile_path}` : noImg} alt="" />
