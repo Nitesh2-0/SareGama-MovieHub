@@ -1,20 +1,11 @@
 import React from 'react';
-import { Circles } from 'react-loader-spinner';
 
 const Loader = () => {
   return (
-    <div className="loader-container">
-      <Circles
-        height="80"
-        width="80"
-        color="#4fa94d"
-        ariaLabel="circles-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-      />
+    <div className='w-screen h-screen bg-black flex items-center justify-center'>
+      <img src={`/webLoader.gif`} alt="Loading..." />
     </div>
   );
 }
 
-export default Loader
+export default Loader;

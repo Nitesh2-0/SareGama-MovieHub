@@ -28,7 +28,7 @@ const Dropdown = ({ options, func , title}) => {
           {title.toUpperCase()}
         </option>
         {options.map((option, index) => (
-          <option key={index} value={option}>
+          <option key={index} value={option.toLowerCase()}>
             {option.toUpperCase()}
           </option>
         ))}

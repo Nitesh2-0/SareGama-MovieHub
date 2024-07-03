@@ -4,23 +4,31 @@ import TopNav from './templates/TopNav';
 import axios from '../utils/axios';
 import Dropdown from './templates/Dropdown';
 import VerticalCart from './templates/VerticalCart';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Loader from './Loader';
 
 const Trending = () => {
   const [category, setCategory] = useState('all');
   const [duration, setDuration] = useState('day');
   const [trending, setTrending] = useState([]);
+  const [page, setPage] = useState(1);
   const navigate = useNavigate();
+
+  document.title = "MovieHUB | Trending " + category.toUpperCase();
 
   const GetTrending = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/${duration}`);
-      setTrending(data.results);
+      const { data } = await axios.get(`/trending/${category}/${duration}?page=${page}`);
+      setTrending((prevData) => [...prevData, ...data.results]);
+      setPage((prevPage) => prevPage + 1);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
+    setTrending([]);
+    setPage(1);
     GetTrending();
   }, [category, duration]);
 
@@ -28,21 +36,47 @@ const Trending = () => {
     navigate(-1);
   };
 
+  const ScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className='w-screen h-screen bg-[#1F1E24]  overflow-x-hidden'>
-      <div className='w-screen h-20 text-zinc-100 px-8 py-5 flex items-center'>
-        <h1 className='cursor-pointer text-xl font-semibold'>
+    <div className='w-full h-full min-h-screen bg-[#1F1E24] flex flex-col'>
+      <div className='w-full text-zinc-100 px-8 py-1 flex items-center justify-between'>
+        <h1 className='cursor-pointer text-xl font-semibold flex items-center'>
           <i
             onClick={BackHandler}
-            className="ri-arrow-left-line text-[15px] bg-zinc-700 hover:border-2 hover:bg-black p-1 rounded-full mr-2"
+            className="ri-arrow-left-line text-[15px] bg-zinc-700 hover:border-2 hover:bg-black px-2 rounded-full mr-2"
           ></i>
           Trending
         </h1>
         <TopNav />
-        <Dropdown title={category} options={['ALL', 'TV', 'MOVIER']} func={setCategory} />
-        <Dropdown title={duration} options={['week', 'day']} func={setDuration} />
+        <div className="flex space-x-4">
+          <Dropdown title={category} options={['all', 'tv', 'movie']} func={setCategory} />
+          <Dropdown title={duration} options={['week', 'day']} func={setDuration} />
+        </div>
       </div>
-      <VerticalCart data={trending} category={category} duration={duration}/>
+      <InfiniteScroll
+        dataLength={trending.length}
+        next={GetTrending}
+        hasMore={true}
+        loader={
+          <div className='w-screen h-full flex text-center items-center justify-center text-white'>
+            <Loader />
+          </div>
+        }
+        className='flex-grow overflow-hidden'
+      >
+        <VerticalCart data={trending} category={category} duration={duration} />
+      </InfiniteScroll>
+      {page > 2 && (
+        <div
+          className='rounded-full px-3 text-zinc-100 py-2 bg-zinc-600 fixed bottom-10 right-2 z-50 cursor-pointer'
+          onClick={ScrollToTop}
+        >
+          <i className="ri-arrow-up-fill"></i>
+        </div>
+      )}
     </div>
   );
 };
