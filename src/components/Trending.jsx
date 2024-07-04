@@ -37,10 +37,11 @@ const Trending = () => {
   };
 
   const ScrollToTop = () => {
+    setPage(1)
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  return (
+  return trending.length > 0 ? (
     <div className='w-full h-full min-h-screen bg-[#1F1E24] flex flex-col'>
       <div className='w-full text-zinc-100 px-8 py-1 flex items-center justify-between'>
         <h1 className='cursor-pointer text-xl font-semibold flex items-center'>
@@ -60,11 +61,7 @@ const Trending = () => {
         dataLength={trending.length}
         next={GetTrending}
         hasMore={true}
-        loader={
-          <div className='w-screen h-full flex text-center items-center justify-center text-white'>
-            <Loader />
-          </div>
-        }
+        loader={<h1 className='text-white text-center font-semibold bg-[#1F1E24]'>Loading...</h1>}
         className='flex-grow overflow-hidden'
       >
         <VerticalCart data={trending} category={category} duration={duration} />
@@ -78,7 +75,7 @@ const Trending = () => {
         </div>
       )}
     </div>
-  );
+  ) : <div className='w-screen h-screen flex justify-center items-center'><Loader /></div>;
 };
 
 export default Trending;

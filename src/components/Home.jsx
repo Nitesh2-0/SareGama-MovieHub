@@ -39,7 +39,7 @@ const Home = () => {
 
   return wallpaper && trending ? <>
     <Nav />
-    <div className="w-[80%] h-screen">
+    <div className="w-[83%] h-screen">
       <TopNav />
       <Header data={wallpaper} />
       <Card data={trending} func={setCategory} />

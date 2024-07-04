@@ -11,10 +11,11 @@ const Popular = () => {
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
 
+  document.title = "MovieHUB | POPULAR " + page
+
   const getPopularPerson = async () => {
     try {
       const { data } = await axios.get(`/person/popular?page=${page}`);
-      // setPerson(data.results);
       setPerson((prev) => [...prev, ...data.results])
       console.log(data);
       setPage(page + 1)
@@ -32,6 +33,7 @@ const Popular = () => {
   }, []);
 
   const scrollToTop = () => {
+    setPage(1)
     window.scrollTo({top:0, behavior:'smooth'})
   }
 
