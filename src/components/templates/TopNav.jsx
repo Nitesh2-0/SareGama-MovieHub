@@ -17,14 +17,16 @@ const TopNav = () => {
   };
 
   useEffect(() => {
-    getSearches();
+    if (query.length > 0) {
+      getSearches();
+    }
   }, [query]);
 
   return (
-    <div className="bg-[#1F1E24] w-full h-[10vh] relative flex justify-center items-center px-4 md:px-8">
-      <div className='w-full md:w-3/4 lg:w-2/3'>
-        <div className="flex items-center">
-          <i className="ri-search-line cursor-pointer text-zinc-400 text-xl p-1"></i>
+    <div className="w-full h-[10vh] relative flex justify-center items-center px-4 md:px-8 ">
+      <div className='w-full md:w-3/4 lg:w-2/3 relative'>
+        <div className="flex items-center bg-[#1f1e24cb] rounded-lg overflow-hidden border-2 border-zinc-600 focus-within:border-blue-500 transition-all duration-300">
+          <i className="ri-search-line cursor-pointer text-zinc-400 text-xl p-2"></i>
           <input
             className="p-2 bg-transparent w-full px-5 outline-none text-zinc-200"
             type="text"
@@ -34,17 +36,21 @@ const TopNav = () => {
             value={query}
           />
           {query.length > 0 && (
-            <i className="ri-close-line cursor-pointer text-zinc-400 text-2xl p-1 ml-5" onClick={() => setQuery("")}></i>
+            <i className="ri-close-line cursor-pointer text-zinc-400 text-2xl p-2 ml-2" onClick={() => setQuery("")}></i>
           )}
         </div>
         {query.length > 0 && (
-          <div className="z-50 w-full md:w-3/4 lg:w-2/3 max-h-[50vh] bg-zinc-800 absolute top-full overflow-y-auto overflow-x-hidden shadow-lg">
-            {search.map((s, idx) => (
-              <Link key={idx} className='flex items-center p-4 border-b border-zinc-100 font-semibold text-zinc-300 hover:bg-[#1F1E24] duration-100 hover:text-white'>
-                <img className='w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24 rounded mr-4 shadow-lg' src={(s.backdrop_path || s.profile_path) ? `https://image.tmdb.org/t/p/original/${s.backdrop_path || s.profile_path}` : noImg} alt="" />
-                <span className="text-sm md:text-base lg:text-lg">{s.name || s.original_name || s.title || s.original_title}</span>
-              </Link>
-            ))}
+          <div className="z-50 w-full max-h-[50vh] bg-zinc-800 absolute top-full mt-0 overflow-y-auto overflow-x-hidden shadow-lg rounded-lg-b">
+            {search.length > 0 ? (
+              search.map((s, idx) => (
+                <Link key={idx} className='flex items-center p-4 border-b border-zinc-100 font-semibold text-zinc-300 hover:bg-[#1F1E24] duration-100 hover:text-white'>
+                  <img className='w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24 rounded mr-4 shadow-lg' src={(s.backdrop_path || s.profile_path) ? `https://image.tmdb.org/t/p/original/${s.backdrop_path || s.profile_path}` : noImg} alt={s.name || s.original_name || s.title || s.original_title} />
+                  <span className="text-sm md:text-base lg:text-lg">{s.name || s.original_name || s.title || s.original_title}</span>
+                </Link>
+              ))
+            ) : (
+              <div className="p-4 text-zinc-300 text-center">No results found</div>
+            )}
           </div>
         )}
       </div>

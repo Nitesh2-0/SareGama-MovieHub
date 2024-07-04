@@ -5,6 +5,8 @@ import People from './components/People'
 import Popular from './components/Popular'
 import Movie from './components/Movie'
 import TvShows from './components/TvShows'
+import AboutUs from './components/AboutUs'
+
 const App = () => {
   return <div className="bg-[#1F1E24] w-screen h-screen flex">
     <Routes>
@@ -14,6 +16,8 @@ const App = () => {
       <Route path='/movie' element={<Movie />}></Route>
       <Route path='/tvshows' element={<TvShows />}></Route>
       <Route path='/people' element={<People />}></Route>
+      <Route path='/aboutUs' element={<AboutUs />}></Route>
+      <Route path='/contactUs' element={<AboutUs />}></Route>
     </Routes>
   </div>
 }

@@ -13,7 +13,7 @@ const Header = ({ data }) => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
       }}
-      className="w-full h-[50vh] bg-cover bg-center p-10 flex flex-col justify-end items-start"
+      className="w-full h-[60vh] bg-cover bg-center p-10 flex flex-col justify-end items-start"
     >
       <h1 className="font-black text-white text-5xl mb-2 w-[70%]">{data.name || data.original_name || data.title || data.original_title}</h1>
       <p className="text-white w-[70%] mt-2 mb-2">{data.overview.slice(0, 200)}...<Link className="text-indigo-400">more</Link></p>

@@ -14,8 +14,8 @@ const Nav = () => {
       <hr className='mt-3' />
       <h2 className="font-semibold mt-8 mb-4">Website Information</h2>
       <nav className='w-full flex flex-col'>
-        <Link className='text-zinc-300 p-5 hover:bg-indigo-700 hover:text-zinc-50 rounded-lg duration-150 '><i className="ri-information-fill text-indigo-500 hover:text-yellow-300"></i> About MovieHUB</Link>
-        <Link className='text-zinc-300 p-5 hover:bg-indigo-700 hover:text-zinc-50 rounded-lg duration-150 '><i className="ri-cellphone-fill"></i> Contact Us</Link>
+        <Link to="/aboutUs" className='text-zinc-300 p-5 hover:bg-indigo-700 hover:text-zinc-50 rounded-lg duration-150 '><i className="ri-information-fill text-indigo-500 hover:text-yellow-300"></i> About MovieHUB</Link>
+        <Link to="/contactUs" className='text-zinc-300 p-5 hover:bg-indigo-700 hover:text-zinc-50 rounded-lg duration-150 '><i className="ri-cellphone-fill"></i> Contact Us</Link>
       </nav>
     </div>
   </>
