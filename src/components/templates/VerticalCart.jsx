@@ -2,11 +2,13 @@ import React from 'react';
 import Loader from './../Loader';
 import { Link } from 'react-router-dom';
 
-const VerticalCart = ({ data, category, duration }) => {
+const VerticalCart = ({title, data, category, duration }) => {
+  console.log(category);
+  console.log(title);
   return data ? (
     <div className='w-full h-full bg-[#1F1E24] overflow-x-hidden'>
       <div className='w-full text-zinc-400 flex justify-between px-4 sm:px-16'>
-        {category ? <h2>CATEGORY: {category.toUpperCase()}</h2> : ""}
+        {category ? <h2>CATEGORY: {category.toUpperCase().replaceAll('_'," ")}</h2> : ""}
         {duration ? <h2>DURATION: {duration.toUpperCase()}</h2> : ""}
       </div>
       <div className='text-white p-4 flex flex-wrap justify-center gap-4 sm:gap-8'>

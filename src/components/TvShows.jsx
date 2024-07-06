@@ -13,6 +13,8 @@ const TvShows = () => {
   const [tvShows, setTvShows] = useState([])
   const [page, setPage] = useState(1);
 
+  document.title = 'TV Shows | ' + category.toUpperCase()
+
   const GetTvShows = async () => {
     try {
       const { data } = await axios.get(`/tv/${category.toLowerCase()}?page=${page}`)
@@ -49,7 +51,7 @@ const TvShows = () => {
         </h1>
         <TopNav />
         <div className="flex space-x-4">
-          <Dropdown title={category} options={['popular','top_rated', 'on_the_air']} func={setCategory} />
+          <Dropdown title={category} options={['Airing_Today','popular','top_rated', 'on_the_air']} func={setCategory} />
         </div>
       </div>
       <InfiniteScroll
@@ -58,7 +60,7 @@ const TvShows = () => {
         hasMore={true}
         loader={<h1 className='text-center bg-[#1F1E24] font-semibold text-white'>Loading...</h1>}
       >
-        <VerticalCart category="" duration="" data={tvShows} />
+        <VerticalCart title="tv" category={category} duration="" data={tvShows} />
       </InfiniteScroll>
       {page > 3 && (
         <div

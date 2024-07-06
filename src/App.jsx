@@ -6,18 +6,27 @@ import Popular from './components/Popular'
 import Movie from './components/Movie'
 import TvShows from './components/TvShows'
 import AboutUs from './components/AboutUs'
+import MovieDetails from './components/MovieDetails'
+import TvDetails from './components/TvDetails'
+import PersonDetails from './components/PersonDetails'
 
 const App = () => {
   return <div className="bg-[#1F1E24] w-screen h-screen flex">
     <Routes>
-      <Route path='/' element={<Home />}></Route>
-      <Route path='/trending' element={<Trending />}></Route>
-      <Route path='/popular' element={<Popular />}></Route>
-      <Route path='/movie' element={<Movie />}></Route>
-      <Route path='/tvshows' element={<TvShows />}></Route>
-      <Route path='/people' element={<People />}></Route>
-      <Route path='/aboutUs' element={<AboutUs />}></Route>
-      <Route path='/contactUs' element={<AboutUs />}></Route>
+      <Route path='/' element={<Home />} />
+      <Route path='/trending' element={<Trending />} />
+      <Route path='/popular' element={<Popular />} />
+      <Route path='/movie' element={<Movie />}>
+        <Route path='/movie/details/:id' element={<MovieDetails />} />
+      </Route>
+      <Route path='/tvshows' element={<TvShows />}>
+        <Route path='/tvshows/details/:id' element={<TvDetails />} />
+      </Route>
+      <Route path='/people' element={<People />}>
+        <Route path='/people/details/:id' element={<PersonDetails />} />
+      </Route>
+      <Route path='/aboutUs' element={<AboutUs />} />
+      <Route path='/contactUs' element={<AboutUs />} />
     </Routes>
   </div>
 }

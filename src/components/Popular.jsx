@@ -17,7 +17,6 @@ const Popular = () => {
     try {
       const { data } = await axios.get(`/person/popular?page=${page}`);
       setPerson((prev) => [...prev, ...data.results])
-      console.log(data);
       setPage(page + 1)
     } catch (error) {
       console.error('Error fetching popular persons:', error);
@@ -58,7 +57,7 @@ const Popular = () => {
         loader={<h4>Loading...</h4>}
         className='flex-grow overflow-hidden'
       >
-        <VerticalCart category="" duration="" data={person} />
+        <VerticalCart title="popular" category="" duration="" data={person} />
       </InfiniteScroll>
       {page > 2 && (
         <div

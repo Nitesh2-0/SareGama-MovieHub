@@ -21,7 +21,6 @@ const Movie = () => {
       const { data } = await axios.get(`/movie/${category}?page=${page}`);
       setMovies((prevMovies) => [...prevMovies, ...data.results]);
       setPage(page + 1)
-      console.log(data.results);
     } catch (error) {
       console.error(error);
     }
@@ -38,7 +37,7 @@ const Movie = () => {
   }, [category]);
 
   const ScrollToTop = () => {
-    setPage(1)
+    setPage(2)
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -63,7 +62,7 @@ const Movie = () => {
       hasMore={true}
       loader = {<h1 className='text-center font-semibold text-white'>Loading...</h1>}
       >
-        <VerticalCart category="" duration="" data={movies} />
+        <VerticalCart title="movie" category={category} duration="" data={movies} />
       </InfiniteScroll>
       {page > 2 && (
         <div

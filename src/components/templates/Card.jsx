@@ -28,13 +28,13 @@ const Card = ({ data, func }) => {
       </button>
       <div ref={scrollRef} className='w-full mt-4 mb-2 h-full overflow-auto flex overflow-y-hidden gap-3'>
         {data.map((item, index) => (
-          <div key={index} className="w-1/5 shadow-md h-98 rounded flex-shrink-0 flex flex-col items-center">
+          <div key={index} className="w-[400px] lg:w-1/5 shadow-md lg:h-98 rounded flex-shrink-0 flex flex-col items-center">
             <img className='w-full rounded-t' src={`https://image.tmdb.org/t/p/original/${item.backdrop_path || item.poster_path}`} alt="" />
             <div className="bg-gray-800 p-4 w-full rounded-b">
               <h1 className="font-black text-zinc-200 text-xl mb-2 truncate w-full">
                 {item.name || item.original_name || item.title || item.original_title}
               </h1>
-              <p className='text-gray-300 text-sm mb-2'>{item.overview.slice(0, 50)}... <Link className="text-indigo-400">more</Link></p>
+              <p className='text-gray-300 text-sm mb-2 '>{item.overview.slice(0, 70)}... <Link className="text-indigo-400">more</Link></p>
             </div>
           </div>
         ))}

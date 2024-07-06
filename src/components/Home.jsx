@@ -58,11 +58,12 @@ const Home = () => {
     ) : (
       <>
         <Nav />
-        <div className="w-[83%] h-screen relative">
-          <div className='absolute -top-1 w-full '>
-            <i className="z-50 px-2 py-1 hover:bg-[#1F1E24] duration-1000 rounded-full bg-[#1f1e248f] cursor-pointer ri-search-line absolute left-10 text-xl font-semibold text-zinc-200 top-5" onClick={toggleSearch}></i>
+        <div className="w-full overflow-hidden lg:w-[83%] h-screen relative">
+          <div  className='hidden absolute -top-1 w-full lg:flex'>
+            <i className="z-50 px-2 py-1 hover:bg-[#1F1E24] duration-1000 rounded-full bg-[#1f1e248f] cursor-pointer ri-search-line absolute left-2 lg:left-10 text-xl font-semibold text-zinc-200 top-16 lg:top-5" onClick={toggleSearch}></i>
             {showSearch && <TopNav />}
           </div>
+          <div className='lg:hidden w-full bg-transparent'><TopNav  /></div>
           <Header data={wallpaper} />
           <Card data={trending} func={setCategory} />
         </div>

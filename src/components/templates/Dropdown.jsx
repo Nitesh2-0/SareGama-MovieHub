@@ -17,7 +17,7 @@ const Dropdown = ({ options, func , title}) => {
   }, [selectedOption])
 
   return (
-    <div className="px-4 py-1 w-52 text-zinc-300">
+    <div className="px-4 py-1 w-40 lg:w-52 text-zinc-300">
       <select
         id="dropdown"
         value={selectedOption}

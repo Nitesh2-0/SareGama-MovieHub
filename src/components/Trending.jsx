@@ -64,7 +64,7 @@ const Trending = () => {
         loader={<h1 className='text-white text-center font-semibold bg-[#1F1E24]'>Loading...</h1>}
         className='flex-grow overflow-hidden'
       >
-        <VerticalCart data={trending} category={category} duration={duration} />
+        <VerticalCart title="trending" data={trending} category={category} duration={duration} />
       </InfiniteScroll>
       {page > 2 && (
         <div

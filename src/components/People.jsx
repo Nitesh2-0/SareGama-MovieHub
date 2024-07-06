@@ -11,12 +11,13 @@ const People = () => {
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
 
+  document.title = "MovieHUB | People"
+
   const GetPeople = async () => {
     try {
       const { data } = await axios.get(`/person/popular?page=${page}`);
       setPeople((prev) => [...prev, ...data.results]);
       setPage(page + 1);
-      console.log(data.results);
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +55,7 @@ const People = () => {
         hasMore={true}
         loader={<h1 className='text-center bg-[#1F1E24] font-semibold text-white'>Loading...</h1>}
       >
-        <VerticalCart category="" duration="" data={people} />
+        <VerticalCart title="person" category="" duration="" data={people} />
       </InfiniteScroll>
       {page > 2 && (
         <div
