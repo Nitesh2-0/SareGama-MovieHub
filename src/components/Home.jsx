@@ -8,15 +8,14 @@ import Loader from './Loader';
 
 const Home = () => {
   document.title = "MovieHUB | All";
-  const [wallpaper, setWallpaper] = useState(null);
-  const [trending, setTrending] = useState(null);
+  const [wallpaper, setWallpaper] = useState('');
+  const [trending, setTrending] = useState('');
   const [category, setCategory] = useState("all");
   const [loading, setLoading] = useState(true);
   const [showSearch, setShowSearch] = useState(false);
 
   const toggleSearch = () => {
     setShowSearch(!showSearch);
-    console.log('a;a,c');
   };
 
   const getBackgroundWallpaper = async () => {

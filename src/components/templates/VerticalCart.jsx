@@ -13,7 +13,7 @@ const VerticalCart = ({title, data, category, duration }) => {
       </div>
       <div className='text-white p-4 flex flex-wrap justify-center gap-4 sm:gap-8'>
         {data.map((c, i) => (
-          <Link 
+          <Link to={`/${c.media_type || title}/details/${c.id}`}
             key={i}  
             className='w-40 relative sm:w-64 h-80 sm:h-96 text-zinc-300 transform transition-transform duration-200 hover:scale-105 shadow-md hover:shadow-lg'
            

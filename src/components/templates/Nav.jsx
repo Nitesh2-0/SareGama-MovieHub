@@ -20,10 +20,10 @@ const Nav = () => {
           <Link to="/movie" className='text-zinc-300 p-5 hover:bg-indigo-700 hover:text-zinc-50 rounded-lg duration-150'>
             <i className="ri-movie-fill mr-2"></i> Movies
           </Link>
-          <Link to="/tvshows" className='text-zinc-300 p-5 hover:bg-indigo-700 hover:text-zinc-50 rounded-lg duration-150'>
+          <Link to="/tv" className='text-zinc-300 p-5 hover:bg-indigo-700 hover:text-zinc-50 rounded-lg duration-150'>
             <i className="ri-tv-2-line mr-2"></i> TV Shows
           </Link>
-          <Link to="/people" className='text-zinc-300 p-5 hover:bg-indigo-700 hover:text-zinc-50 rounded-lg duration-150'>
+          <Link to="/person" className='text-zinc-300 p-5 hover:bg-indigo-700 hover:text-zinc-50 rounded-lg duration-150'>
             <i className="ri-team-fill mr-2"></i> People
           </Link>
         </nav>
@@ -50,10 +50,10 @@ const Nav = () => {
         <Link to="/movie" className='text-zinc-300 p-2 hover:text-zinc-50'>
           <i className="ri-movie-fill text-2xl"></i> Movies
         </Link>
-        <Link to="/tvshows" className='text-zinc-300 p-2 hover:text-zinc-50'>
+        <Link to="/tv" className='text-zinc-300 p-2 hover:text-zinc-50'>
           <i className="ri-tv-2-line text-2xl"></i> Shows
         </Link>
-        <Link to="/people" className='text-zinc-300 p-2 hover:text-zinc-50'>
+        <Link to="/person" className='text-zinc-300 p-2 hover:text-zinc-50'>
           <i className="ri-team-fill text-2xl"></i> People
         </Link>
       </div>
