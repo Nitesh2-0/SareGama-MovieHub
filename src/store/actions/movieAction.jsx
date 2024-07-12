@@ -15,8 +15,8 @@ export const asyncloadmovie = (id) => async (dispath,getState) =>{
       externalid:externalid.data,
       recommendations:recommendations.data,
       similar: similar.data,
-      videos: videos.data,
-      watchproviders:watchproviders.data
+      videos: videos.data.results.find((m) => m.type === "Trailer"),
+      watchproviders:watchproviders.data.results.IN
     }; 
     console.log(theultimatedetails);
   } catch (error) {

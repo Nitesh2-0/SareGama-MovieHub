@@ -40,7 +40,7 @@ const Nav = () => {
       </div>
 
       {/* Navbar for mobile and tablet views */}
-      <div className='lg:hidden w-full bg-gray-800 p-4 fixed  bottom-0 flex z-50 justify-around text-center text-white'>
+      <div className='lg:hidden w-full bg-gray-800 p-4 fixed bottom-0 flex z-50 justify-around text-center text-white'>
         <Link to="/trending" className='text-zinc-300 p-2 hover:text-zinc-50'>
           <i className="ri-fire-fill text-2xl"></i> Trending
         </Link>
@@ -51,7 +51,7 @@ const Nav = () => {
           <i className="ri-movie-fill text-2xl"></i> Movies
         </Link>
         <Link to="/tv" className='text-zinc-300 p-2 hover:text-zinc-50'>
-          <i className="ri-tv-2-line text-2xl"></i> Shows
+          <i className="ri-tv-2-line text-2xl"></i> TV Shows
         </Link>
         <Link to="/person" className='text-zinc-300 p-2 hover:text-zinc-50'>
           <i className="ri-team-fill text-2xl"></i> People
