@@ -51,7 +51,7 @@ const Nav = () => {
           <i className="ri-movie-fill text-2xl"></i> Movies
         </Link>
         <Link to="/tv" className='text-zinc-300 p-2 hover:text-zinc-50'>
-          <i className="ri-tv-2-line text-2xl"></i> TV Shows
+          <i className="ri-tv-2-line text-2xl"></i> TV 
         </Link>
         <Link to="/person" className='text-zinc-300 p-2 hover:text-zinc-50'>
           <i className="ri-team-fill text-2xl"></i> People
